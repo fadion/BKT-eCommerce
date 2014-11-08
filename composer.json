@@ -17,7 +17,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Fadion\\BKT": "src"
+            "Fadion\\BKT\\": "src"
         }
     }
 }
