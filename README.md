@@ -8,6 +8,8 @@ Klasat mund të përdoren manualisht ose me `composer`. Kjo e fundit është më
 
 ### Composer
 
+Composer mund të përdoret në një script tuajin apo në një framework (Laravel, Symfony, etj), dhe në çdo rast paketa funksionon njësoj. I vetmi ndryshim është se me framework, proçesi i autoload kryhet automatikisht për ju dhe nuk keni nevojë të ndiqni hapin e fundit.
+
 Fillimisht përfshini paketën në `composer.json`:
 
 ```json
@@ -31,8 +33,8 @@ require 'vendor/autoload.php';
 Mjafton ti përfshini klasat aty ku ju duhet. Vendodhja e tyre mund të mos jetë si më poshtë, sepse varet ku i keni vendosur.
 
 ```php
-require('bkt/src/Authenticate.php');
-require('bkt/src/Notify.php');
+require 'bkt/src/Authenticate.php';
+require 'bkt/src/Notify.php';
 ```
 
 ## Autorizimi
