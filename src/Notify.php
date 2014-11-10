@@ -106,7 +106,7 @@ class Notify {
 
         while ($index1 < strlen($hashParams)) {
             $index2 = strpos($hashParams, ':', $index1);
-            $vl = Input::get(substr($hashParams, $index1, $index2 - $index1));
+            $vl = $this->post[substr($hashParams, $index1, $index2 - $index1)];
 
             if ($vl == null) {
                 $vl = '';
