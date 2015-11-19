@@ -70,23 +70,29 @@ class Authenticate implements ArrayAccess
     public function inputs()
     {
         $data = $this->data;
+        $output = '';
+        $inputs = [
+            'clientid' => $data['clientid'],
+            'amount' => $data['amount'],
+            'islemtipi' => $data['transactiontype'],
+            'taksit' => $data['instalment'],
+            'oid' => $data['orderid'],
+            'okUrl' => $data['okUrl'],
+            'failUrl' => $data['failUrl'],
+            'rnd' => $data['rnd'],
+            'hash' => $data['hash'],
+            'storetype' => $data['storetype'],
+            'lang' => 'sq',
+            'currency' => $data['currency'],
+            'refreshtime' => '10',
+            'Fismi' => ''
+        ];
 
-        $output  = '<input type="hidden" name="clientid" value="'.$data['clientid'].'">'."\n";
-        $output .= '<input type="hidden" name="amount" value="'.$data['amount'].'">'."\n";
-        $output .= '<input type="hidden" name="islemtipi" value="'.$data['transactiontype'].'">'."\n";
-        $output .= '<input type="hidden" name="taksit" value="'.$data['instalment'].'">'."\n";
-        $output .= '<input type="hidden" name="oid" value="'.$data['orderid'].'">'."\n";
-        $output .= '<input type="hidden" name="okUrl" value="'.$data['okUrl'].'">'."\n";
-        $output .= '<input type="hidden" name="failUrl" value="'.$data['failUrl'].'">'."\n";
-        $output .= '<input type="hidden" name="rnd" value="'.$data['rnd'].'">'."\n";
-        $output .= '<input type="hidden" name="hash" value="'.$data['hash'].'">'."\n";
-        $output .= '<input type="hidden" name="storetype" value="'.$data['storetype'].'">'."\n";
-        $output .= '<input type="hidden" name="lang" value="sq">'."\n";
-        $output .= '<input type="hidden" name="currency" value="'.$data['currency'].'">'."\n";
-        $output .= '<input type="hidden" name="refreshtime" value="10">'."\n";
-        $output .= '<input type="hidden" name="Fismi" value="">';
+        foreach ($inputs as $name => $value) {
+            $output .= '<input type="hidden" name="'.$name.'" value="'.$value.'">'."\n";
+        }
 
-        return $output;
+        return trim($output, "\n");
     }
 
     /**
