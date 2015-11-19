@@ -2,7 +2,7 @@
 
 namespace Fadion\BKT;
 
-use Exception;
+use Fadion\BKT\Exceptions\AuthenticateException;
 use ArrayAccess;
 
 class Authenticate implements ArrayAccess
@@ -54,7 +54,7 @@ class Authenticate implements ArrayAccess
     public function generate()
     {
         if (!$this->validate()) {
-            throw new Exception("Important fields are missing. Please fill all the required fields before generating.");
+            throw new AuthenticateException("Important fields are missing. Please fill all the required fields before generating.");
         }
 
         $this->data['hash'] = $this->makeHash();

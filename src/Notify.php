@@ -2,7 +2,7 @@
 
 namespace Fadion\BKT;
 
-use Exception;
+use Fadion\BKT\Exceptions\NotifyException;
 
 class Notify {
 
@@ -46,8 +46,8 @@ class Notify {
      */
     public function success()
     {
-        if (! $this->validate()) {
-            throw new Exception("POST data are missing critical information.");
+        if (!$this->validate()) {
+            throw new NotifyException("POST data is missing critical information.");
         }
 
         $response = $this->post['response'];
@@ -68,7 +68,7 @@ class Notify {
      */
     public function error()
     {
-        return ! $this->success();
+        return !$this->success();
     }
 
     /**
