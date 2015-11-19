@@ -1,12 +1,9 @@
-<?php namespace Fadion\BKT;
+<?php
+
+namespace Fadion\BKT;
 
 use Exception;
 
-/**
- * Notify
- * 
- * Validon pergjigjen nga serveri.
- */
 class Notify {
 
     /**
@@ -20,7 +17,7 @@ class Notify {
     protected $storekey;
 
     /**
-     * Vendos te dhenat post dhe storekey.
+     * Vendos te dhenat post dhe storekey
      * 
      * @param array $post
      * @param string $storekey
@@ -32,7 +29,7 @@ class Notify {
     }
 
     /**
-     * Factory per ta krijuar objektin.
+     * Factory per ta krijuar objektin
      * 
      * @param array $post
      * @param string $storekey
@@ -43,7 +40,7 @@ class Notify {
     }
 
     /**
-     * Njofton nese porosia eshte kryer me sukses.
+     * Njofton nese porosia eshte kryer me sukses
      * 
      * @return bool
      */
@@ -65,7 +62,7 @@ class Notify {
     }
 
     /**
-     * Njofton nese porosia nuk eshte kryer.
+     * Njofton nese porosia nuk eshte kryer
      * 
      * @return bool
      */
@@ -76,7 +73,7 @@ class Notify {
 
     /**
      * Validon nese te dhenat nga POST jane te plota
-     * dhe hash eshte i sakte.
+     * dhe hash eshte i sakte
      * 
      * @return bool
      */
@@ -93,7 +90,7 @@ class Notify {
 
     /**
      * Kontrollon nese hash i ardhur nga serveri
-     * perputhet me ate te gjeneruar lokalisht.
+     * perputhet me ate te gjeneruar lokalisht
      * 
      * @param string $hashParams
      * @param string $hash

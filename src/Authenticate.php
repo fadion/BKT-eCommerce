@@ -1,17 +1,12 @@
-<?php namespace Fadion\BKT;
+<?php
+
+namespace Fadion\BKT;
 
 use Exception;
 use ArrayAccess;
 
-/**
- * Authenticate
- * 
- * Gjeneron hash per te kryer autorizimin
- * dhe lehteson perdorimin e te dhenave
- * ne forme.
- */
-class Authenticate implements ArrayAccess {
-
+class Authenticate implements ArrayAccess
+{
     /**
      * @var string Kodi i monedhes Leke
      */
@@ -30,45 +25,35 @@ class Authenticate implements ArrayAccess {
     /**
      * @var array Te dhenat e porosise
      */
-    protected $data = array();
+    protected $data = [];
 
     /**
      * Vendos te dhenat e porosise duke i bashkuar
-     * me te dhenat baze.
+     * me te dhenat baze
      * 
      * @param array $data
      */
-    public function __construct(array $data = array())
+    public function __construct(array $data = [])
     {
-        $defaults = array(
+        $defaults = [
             'transactiontype' => 'Auth',
             'storetype' => '3D_pay_hosting',
             'instalment' => '',
             'rnd' => time(),
             'currency' => self::CURRENCY_ALL
-        );
+        ];
+
         $this->data = array_merge($defaults, $data);
     }
 
     /**
-     * Factory per ta krijuar objektin.
-     * 
-     * @param array $data
-     * @return Authenticate
-     */
-    public static function make(array $data = array())
-    {
-        return new static($data);
-    }
-
-    /**
-     * Gjeneron hash-in.
+     * Gjeneron hash-in
      * 
      * @return Authenticate
      */
     public function generate()
     {
-        if (! $this->validate()) {
+        if (!$this->validate()) {
             throw new Exception("Important fields are missing. Please fill all the required fields before generating.");
         }
 
@@ -78,7 +63,7 @@ class Authenticate implements ArrayAccess {
     }
 
     /**
-     * Gjeneron input-et e formes.
+     * Gjeneron input-et e formes
      * 
      * @return string
      */
@@ -106,7 +91,7 @@ class Authenticate implements ArrayAccess {
 
     /**
      * Kontrollon nese te dhenat e detyrueshme
-     * jane vendosur.
+     * jane vendosur
      * 
      * @return bool
      */
@@ -124,7 +109,7 @@ class Authenticate implements ArrayAccess {
     }
 
     /**
-     * Gjeneron Hash per te autorizuar kerkesen.
+     * Gjeneron Hash per te autorizuar kerkesen
      */
     protected function makeHash()
     {
@@ -138,7 +123,7 @@ class Authenticate implements ArrayAccess {
     }
 
     /**
-     * Vendos clientid.
+     * Vendos clientid
      * 
      * @param string $value
      */
@@ -148,7 +133,7 @@ class Authenticate implements ArrayAccess {
     }
 
     /**
-     * Vendos storekey.
+     * Vendos storekey
      * 
      * @param string $value
      */
@@ -158,7 +143,7 @@ class Authenticate implements ArrayAccess {
     }
 
     /**
-     * Vendos amount.
+     * Vendos amount
      * 
      * @param int $value
      */
@@ -168,7 +153,7 @@ class Authenticate implements ArrayAccess {
     }
 
     /**
-     * Vendos orderid.
+     * Vendos orderid
      * 
      * @param string $value
      */
@@ -178,7 +163,7 @@ class Authenticate implements ArrayAccess {
     }
 
     /**
-     * Vendos okUrl.
+     * Vendos okUrl
      * 
      * @param string $value
      */
@@ -188,7 +173,7 @@ class Authenticate implements ArrayAccess {
     }
 
     /**
-     * Vendos failUrl.
+     * Vendos failUrl
      * 
      * @param string $value
      */
@@ -198,7 +183,7 @@ class Authenticate implements ArrayAccess {
     }
 
     /**
-     * Vendos currency.
+     * Vendos currency
      * 
      * @param string $value
      */
